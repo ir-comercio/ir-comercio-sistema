@@ -1,0 +1,24 @@
+{
+  "name": "ir-comercio-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo com Portal Central e Aplicações I.R. Comércio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "install-all": "npm install && cd apps/portal && npm install && cd ../ordem-compra && npm install && cd ../tabela-precos && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "@supabase/supabase-js": "^2.38.4",
+    "http-proxy-middleware": "^2.0.6"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "keywords": ["monorepo", "portal", "microservices"],
+  "author": "I.R. Comércio",
+  "license": "ISC"
+}
