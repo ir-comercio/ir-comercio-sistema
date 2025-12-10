@@ -233,7 +233,7 @@ async function checkServerStatus() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-        const response = await fetch(`${API_URL}/precos`, {
+        const response = await fetch(`${API_URL}/produtos`, {
             method: 'HEAD',
             headers: { 'X-Session-Token': sessionToken },
             signal: controller.signal
@@ -280,7 +280,7 @@ async function loadPrecos() {
     if (!isOnline) return;
 
     try {
-        const response = await fetch(`${API_URL}/precos`, {
+        const response = await fetch(`${API_URL}/produtos`, {
             headers: { 'X-Session-Token': sessionToken }
         });
 
@@ -358,7 +358,7 @@ async function syncWithServer(formData, editId = null, tempId = null) {
     if (!isOnline) return;
 
     try {
-        const url = editId ? `${API_URL}/precos/${editId}` : `${API_URL}/precos`;
+        const url = editId ? `${API_URL}/produtos/${editId}` : `${API_URL}/produtos`;
         const method = editId ? 'PUT' : 'POST';
 
         const response = await fetch(url, { 
@@ -431,7 +431,7 @@ window.deletePreco = async function(id) {
 
     if (isOnline) {
         try {
-            const response = await fetch(`${API_URL}/precos/${id}`, { 
+            const response = await fetch(`${API_URL}/produtos/${id}`, { 
                 method: 'DELETE',
                 headers: { 'X-Session-Token': sessionToken }
             });
