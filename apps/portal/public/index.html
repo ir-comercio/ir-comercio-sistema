@@ -879,19 +879,19 @@
 
         // Módulos disponíveis (REMOVIDOS: fornecedores e catalogos)
         const MODULES = [
-            { id: 'pregões', name: 'Pregões', url: '', available: false },
-            { id: 'tabela-precos', name: 'Tabela de Preços', url: '', available: false },
-            { id: 'compra', name: 'Ordens de Compra', url: '', available: false },
-            { id: 'transportadoras', name: 'Transportadoras', url: '', available: false },
-            { id: 'cotacoes-frete', name: 'Cotações de Frete', url: '', available: false },
-            { id: 'faturamento', name: 'Pedidos de Faturamento', url: '', available: false },
-            { id: 'estoque', name: 'Estoque', url: '', available: false },
-            { id: 'controle-frete', name: 'Controle de Frete', url: '', available: false },
-            { id: 'receber', name: 'Contas a Receber', url: '', available: false },
-            { id: 'vendas', name: 'Vendas', url: '', available: false },
-            { id: 'pagamento', name: 'Contas a Pagar', url: '', available: false },
-            { id: 'documentos', name: 'Documentos', url: '', available: false }
-        ];
+    { id: 'pregões', name: 'Pregões', url: '/pregoes', available: false },
+    { id: 'tabela-precos', name: 'Tabela de Preços', url: '/tabela-precos', available: true },
+    { id: 'compra', name: 'Ordens de Compra', url: '/ordem-compra', available: true },
+    { id: 'transportadoras', name: 'Transportadoras', url: '/transportadoras', available: false },
+    { id: 'cotacoes-frete', name: 'Cotações de Frete', url: '/cotacoes-frete', available: false },
+    { id: 'faturamento', name: 'Pedidos de Faturamento', url: '/faturamento', available: false },
+    { id: 'estoque', name: 'Estoque', url: '/estoque', available: false },
+    { id: 'controle-frete', name: 'Controle de Frete', url: '/controle-frete', available: false },
+    { id: 'receber', name: 'Contas a Receber', url: '/receber', available: false },
+    { id: 'vendas', name: 'Vendas', url: '/vendas', available: false },
+    { id: 'pagamento', name: 'Contas a Pagar', url: '/pagamento', available: false },
+    { id: 'documentos', name: 'Documentos', url: '/documentos', available: false }
+];
 
         let deviceToken = null;
         let publicIP = null;
