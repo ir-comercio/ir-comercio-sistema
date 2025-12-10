@@ -120,9 +120,9 @@ router.get('/api/produtos', verificarAutenticacao, async (req, res) => {
     try {
         console.log('📋 [TABELA-PRECOS] Listando produtos...');
         const { data, error } = await supabase
-            .from('produtos')
+            .from('precos')
             .select('*')
-            .order('nome', { ascending: true });
+            .order('marca', { ascending: true });
 
         if (error) throw error;
 
@@ -142,7 +142,7 @@ router.get('/api/produtos/:id', verificarAutenticacao, async (req, res) => {
     try {
         console.log(`🔍 [TABELA-PRECOS] Buscando produto ID: ${req.params.id}`);
         const { data, error } = await supabase
-            .from('produtos')
+            .from('precos')
             .select('*')
             .eq('id', req.params.id)
             .single();
@@ -187,7 +187,7 @@ router.post('/api/produtos', verificarAutenticacao, async (req, res) => {
         };
 
         const { data, error } = await supabase
-            .from('produtos')
+            .from('precos')
             .insert([novoProduto])
             .select()
             .single();
@@ -221,7 +221,7 @@ router.put('/api/produtos/:id', verificarAutenticacao, async (req, res) => {
         };
 
         const { data, error } = await supabase
-            .from('produtos')
+            .from('precos')
             .update(produtoAtualizado)
             .eq('id', req.params.id)
             .select()
@@ -250,7 +250,7 @@ router.delete('/api/produtos/:id', verificarAutenticacao, async (req, res) => {
     try {
         console.log(`🗑️ [TABELA-PRECOS] Deletando produto ID: ${req.params.id}`);
         const { error } = await supabase
-            .from('produtos')
+            .from('precos')
             .delete()
             .eq('id', req.params.id);
 
@@ -274,10 +274,10 @@ router.get('/api/produtos/search/:termo', verificarAutenticacao, async (req, res
         const termo = `%${req.params.termo}%`;
         
         const { data, error } = await supabase
-            .from('produtos')
+            .from('precos')
             .select('*')
             .or(`nome.ilike.${termo},categoria.ilike.${termo},descricao.ilike.${termo}`)
-            .order('nome', { ascending: true });
+            .order('marca', { ascending: true });
 
         if (error) throw error;
 
@@ -296,10 +296,10 @@ router.get('/api/produtos/categoria/:categoria', verificarAutenticacao, async (r
     try {
         console.log(`🔍 [TABELA-PRECOS] Filtrando por categoria: ${req.params.categoria}`);
         const { data, error } = await supabase
-            .from('produtos')
+            .from('precos')
             .select('*')
             .eq('categoria', req.params.categoria)
-            .order('nome', { ascending: true });
+            .order('marca', { ascending: true });
 
         if (error) throw error;
 
