@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem de Compra</title>
+    <link rel="icon" type="image/png" href="I.R.-COMERCIO-E-MATERIAIS-ELETRICOS-PRETO.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="splash-screen" id="splashScreen">
+        <h1 class="splash-title">Ordem de Compra</h1>
+    </div>
+
+    <div class="app-content">
+        <div class="container">
+            <div class="header">
+                <h1>Ordem de Compra</h1>
+                <div id="connectionStatus" class="connection-status offline">
+                    <span class="status-dot"></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="month-navigation">
+                    <button onclick="changeMonth(-1)" class="month-nav-btn">Anterior</button>
+                    <h3 id="currentMonth" class="month-display">Carregando...</h3>
+                    <button onclick="changeMonth(1)" class="month-nav-btn">Próximo</button>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total de Ordens</div>
+                    <div class="stat-value" id="totalOrdens">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Ordens Fechadas</div>
+                    <div class="stat-value stat-success" id="totalFechadas">0</div>
+                </div>
+                <div class="stat-card" id="cardAbertas">
+                    <div class="stat-label">Ordens Abertas</div>
+                    <div class="stat-value stat-danger" id="totalAbertas">0</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="filter-section">
+                    <div class="form-group">
+                        <label for="search">Pesquisar</label>
+                        <input type="text" id="search" placeholder="Número, fornecedor, responsável..." oninput="filterOrdens()">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterResponsavel">Responsável</label>
+                        <select id="filterResponsavel" onchange="filterOrdens()">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterStatus">Status</label>
+                        <select id="filterStatus" onchange="filterOrdens()">
+                            <option value="">Todos</option>
+                            <option value="aberta">Aberta</option>
+                            <option value="fechada">Fechada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button onclick="clearFilters()" class="secondary" style="margin-top: 1.8rem;">Limpar Filtros</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 40px; text-align: center;">
+                                    <span style="font-size: 1.1rem;">✓</span>
+                                </th>
+                                <th>Nº Ordem</th>
+                                <th>Responsável</th>
+                                <th>Fornecedor</th>
+                                <th>Data</th>
+                                <th>Valor Total</th>
+                                <th>Status</th>
+                                <th style="text-align: center;">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordensContainer"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="fab-button" onclick="openFormModal()" title="Registrar Ordem"></button>
+
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Ordem Nº <span id="modalNumero"></span></h3>
+                <button class="close-modal" onclick="closeInfoModal()">✕</button>
+            </div>
+            
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchInfoTab('info-tab-geral')">Geral</button>
+                    <button class="tab-btn" onclick="switchInfoTab('info-tab-fornecedor')">Fornecedor</button>
+                    <button class="tab-btn" onclick="switchInfoTab('info-tab-pedido')">Pedido</button>
+                    <button class="tab-btn" onclick="switchInfoTab('info-tab-entrega')">Entrega</button>
+                    <button class="tab-btn" onclick="switchInfoTab('info-tab-pagamento')">Pagamento</button>
+                </div>
+
+                <div class="tab-content active" id="info-tab-geral"></div>
+                <div class="tab-content" id="info-tab-fornecedor"></div>
+                <div class="tab-content" id="info-tab-pedido"></div>
+                <div class="tab-content" id="info-tab-entrega"></div>
+                <div class="tab-content" id="info-tab-pagamento"></div>
+            </div>
+
+            <div class="modal-actions">
+                <button onclick="closeInfoModal()" class="secondary">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const splash = document.getElementById('splashScreen');
+            if (splash) splash.style.display = 'none';
+        }, 3000);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
