@@ -1,8 +1,13 @@
 // CONFIGURAÇÃO
-const PORTAL_URL = 'https://ir-comercio-portal-zcan.onrender.com';
+// ❌ ANTES: URL hardcoded do portal antigo
+// const PORTAL_URL = 'https://ir-comercio-portal-zcan.onrender.com';
+
+// ✅ DEPOIS: Usa a raiz do domínio atual (relativo)
+const PORTAL_URL = window.location.origin; // Vai ser automaticamente a URL atual
+
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:3002/api'
-    : `${window.location.origin}/api`;
+    ? 'http://localhost:3000/tabela-precos/api' // ⚠️ AJUSTADO: Precisa do prefixo /tabela-precos
+    : `${window.location.origin}/tabela-precos/api`; // ⚠️ AJUSTADO: API específica da app
 
 let precos = [];
 let isOnline = false;
@@ -207,7 +212,7 @@ function mostrarTelaAcessoNegado(mensagem = 'NÃO AUTORIZADO') {
             <p style="color: var(--text-secondary); margin-bottom: 2rem;">
                 Somente usuários autenticados podem acessar esta área.
             </p>
-            <a href="${PORTAL_URL}" style="
+            <a href="/" style="
                 display: inline-block;
                 background: var(--btn-register);
                 color: white;
