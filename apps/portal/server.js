@@ -13,8 +13,8 @@ const AUTHORIZED_IPS = ['187.36.172.217', '179.181.234.135'];
 // ==========================================
 // ======== CONFIGURAÇÃO DO SUPABASE ========
 // ==========================================
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL_PORTAL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY_PORTAL;
 
 if (!supabaseUrl || !supabaseKey) {
     console.error('❌ [PORTAL] ERRO: Variáveis de ambiente do Supabase não configuradas');
