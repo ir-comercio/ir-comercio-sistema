@@ -14,7 +14,7 @@ const AUTHORIZED_IPS = ['187.36.172.217', '179.181.234.135'];
 // ======== CONFIGURAÇÃO DO SUPABASE ========
 // ==========================================
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // ==========================================
