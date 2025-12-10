@@ -1,13 +1,7 @@
-// CONFIGURAÇÃO
-// ❌ ANTES: URL hardcoded do portal antigo
-// const PORTAL_URL = 'https://ir-comercio-portal-zcan.onrender.com';
-
-// ✅ DEPOIS: Usa a raiz do domínio atual (relativo)
-const PORTAL_URL = window.location.origin; // Vai ser automaticamente a URL atual
-
+const PORTAL_URL = window.location.origin;
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:3000/tabela-precos/api' // ⚠️ AJUSTADO: Precisa do prefixo /tabela-precos
-    : `${window.location.origin}/tabela-precos/api`; // ⚠️ AJUSTADO: API específica da app
+    ? 'http://localhost:3000/tabela-precos/api'
+    : `${window.location.origin}/tabela-precos/api`;
 
 let precos = [];
 let isOnline = false;
