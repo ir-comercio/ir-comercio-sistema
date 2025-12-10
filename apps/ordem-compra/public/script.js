@@ -1,13 +1,7 @@
-// CONFIGURAÇÃO
-// ❌ ANTES: URLs hardcoded antigas
-// const PORTAL_URL = 'https://ir-comercio-portal-zcan.onrender.com';
-// const API_URL = 'https://ordem-compra.onrender.com/api';
-
-// ✅ DEPOIS: URLs corretas para o monorepo
-const PORTAL_URL = window.location.origin; // Pega automaticamente a URL atual
+const PORTAL_URL = window.location.origin;
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:3000/ordem-compra/api'  // ✅ Local: porta 3000 + prefixo
-    : `${window.location.origin}/ordem-compra/api`; // ✅ Produção: com prefixo
+    ? 'http://localhost:3000/ordem-compra/api'
+    : `${window.location.origin}/ordem-compra/api`;
 
 let ordens = [];
 let currentMonth = new Date();
