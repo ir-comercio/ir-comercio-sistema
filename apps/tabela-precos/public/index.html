@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Preços</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <h1 class="splash-title">Tabela de Preços</h1>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="app-content">
+        <div class="container">
+            <div class="header">
+                <h1>Tabela de Preços</h1>
+                <div id="connectionStatus" class="connection-status offline">
+                    <span class="status-dot"></span>
+                </div>
+            </div>
+
+            <div id="statusMessage" class="hidden"></div>
+
+            <!-- REMOVIDO: Botão fixo no topo -->
+            <!-- <div class="button-wrapper">
+                <button onclick="toggleForm()" class="register">Adicionar Preço</button>
+            </div> -->
+
+            <div class="card">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 1rem; font-weight: 600; color: var(--text-primary);">
+                        Filtrar por Marca:
+                    </label>
+                    <div id="marcasFilter" style="display: flex; gap: 0.75rem; flex-wrap: wrap;"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="form-group">
+                        <label for="search">Pesquisar</label>
+                        <input type="text" id="search" placeholder="Código, marca, descrição..." oninput="filterPrecos()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div id="precosContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOVO: Botão Flutuante (igual ao Contas a Pagar) -->
+    <button onclick="toggleForm()" class="floating-add-btn" title="Adicionar Preço">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+    </button>
+
+    <script>
+        // Esconder splash após 3 segundos
+        setTimeout(() => {
+            const splash = document.getElementById('splashScreen');
+            if (splash) splash.style.display = 'none';
+        }, 3000);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
